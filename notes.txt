@@ -1,0 +1,27 @@
+as camadas do clean arch devem seguir o fluxo padrao web > controller > use cases > entities
+as camadas n devem se comunicar com outras fora desse fluxo. ex controller se comunicar com entities
+
+--------------------------------------------
+camada entities:
+-onde se aplica a regra de negocios
+-nao deve ter influencia dos frameworks, libs e outras ferramentas
+
+
+camada use cases:
+-camada que controla o fluxo das acoes do usuario
+-se o sistema precisa listar items, cadastrar items, todas essas acoes ficam nessa camada 
+-essa camada tambem deve ser agonostica das ferramentas utilizadas na aplicação
+
+
+camada controllers,/gateways/presentes
+-é nessa camada onde utiliamos os frameworks e libs
+-nao deve ter acesso as entidades, quem faz isso sao os use cases, so pode ter acesso a cama azul(db, web, etc) ou vermelha (usecases)
+
+
+-camada devices/db/web/ii/external interfaces
+-camada que da inicio a operação na aplicação, se comunica direto com os controllers
+
+
+
+---------------------------------------------------------
+é comum vermos projetos onde a pasta domain é da camada entities, a pasta usecases é da camada use cases, e a pasta infra é dos controllers
